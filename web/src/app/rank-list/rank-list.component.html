@@ -1,0 +1,36 @@
+<section class="registrationInfo">
+  <h4 class="right">{{appService.StaffWelcomeMessage}}</h4>
+  <div class="container">
+
+    <h1 class="page-heading m-b-1">Rank List</h1>
+
+    <div class="row" *ngIf="showAcadamicYears">
+      <div class="col-sm-3 m-b-1">
+        <label>
+          Academic Year:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="academicYearList" placeholder="Academic Year"
+          [(ngModel)]="selectedAcademicYear" optionLabel="Year" id="state-id">
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="clear"> </div>
+
+    <div class="row m-b-1" *ngIf="!showAcadamicYears">
+      <ag-grid-angular #agGrid id="rankListGrid" class="ag-theme-balham" [columnDefs]="rankListColumnDefs"
+        style="width: 100%; height: 500px;" (gridReady)="onGridReady($event)" [rowData]="rankList">
+      </ag-grid-angular>
+
+    </div>
+
+    <div class="text-center no-gutter right hidden-print m-b-1">
+      <button class="btn btn-primary  m-r-2  fontweightbold" *ngIf="showAcadamicYears" (click)="viewRankList()"
+        [disabled]="!selectedAcademicYear">View</button>
+
+      <button class="btn btn-primary  fontweightbold" (click)="back()">Back</button>
+    </div>
+    <div class="clear w-100"></div>
+
+  </div>
+</section>

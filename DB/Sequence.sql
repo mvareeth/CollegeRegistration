@@ -1,0 +1,23 @@
+ALTER SEQUENCE "Ref"."TotalMarkCutOff_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Subject_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."SubjectMarkCutOff_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."State_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Staff_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."SecurityQuestionBank_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."RankList_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Quota_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Department_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Country_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."College_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."City_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Branch_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."BranchSubject_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."BranchStaff_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Application_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Applicant_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."ApplicantReservation_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."ApplicantPreference_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."ApplicantMark_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."Address_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "Ref"."AcademicYear_Id_seq" RESTART WITH 1;
+

@@ -1,0 +1,76 @@
+<section class="registrationInfo">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-number">
+          Application Number:</label>
+      </div>
+      <div class="col-sm-3  m-b-1">
+        <input type="text" class="form-control d-inline" name="aplfname" id="apl-number"
+          [(ngModel)]="applicationNumber">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3  m-b-1 required">
+        <label for="apl-fname">
+          First Name:</label>
+      </div>
+      <div class="col-sm-5">
+        <input type="text" class="form-control d-inline" name="aplfname" id="apl-fname" [(ngModel)]="firstName">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="apl-mname">
+          Middle Name:</label>
+      </div>
+      <div class="col-sm-5  m-b-1">
+        <input type="text" class="form-control d-inline" name="aplmname" id="apl-mname" [(ngModel)]="middleName">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-lname"> Last Name:</label>
+      </div>
+      <div class="col-sm-5  m-b-1">
+        <input type="text" class="form-control d-inline" name="apllname" id="apl-lname" [(ngModel)]="lastName"></div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-sm-3 m-b-1 required"> <label for="apl-dob">Date of Birth:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-calendar class="col-md-12 p-l-0 p-r-0 d-inlineb" [(ngModel)]="dateOfBirth" name="apldob" id="apl-dob"
+          [inputStyle]="{'width':'80%'}" showIcon="true" placeholder="mm/dd/yyyy" dateFormat="mm/dd/yy"
+          title="date of birth" [maxDate]="maxDate"></p-calendar>
+      </div>
+
+    </div>
+
+
+    <div class="text-center no-gutter hidden-print" *ngIf="!isShowSecQuestion && !isShowViewResult">
+      <button class="btn btn-primary right fontweightbold" [disabled]="!enableSubmitButton"
+        (click)="submit()">Submit</button>
+    </div>
+
+    <div class="clear w-100"></div>
+    <div class="text-center no-gutter right hidden-print" *ngIf="isShowViewResult">
+      <button class="btn btn-primary m-r-2 fontweightbold" (click)="viewResult()">View Result</button>
+
+      <button class="btn btn-primary  fontweightbold" (click)="viewApplication()">View Application</button>
+    </div>
+
+    <div class="clear w-100"></div>
+    <app-security-question *ngIf="isShowSecQuestion" #secQuestions></app-security-question>
+
+    <div class="text-center no-gutter hidden-print">
+      <button class="btn btn-primary right fontweightbold" *ngIf="isShowSecQuestion" [disabled]="!enableLoginButton"
+        (click)="login()">Login</button>
+    </div>
+    <div class="clear w-100"></div>
+  </div>
+</section>

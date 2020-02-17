@@ -1,0 +1,229 @@
+<section class="registrationInfo">
+  <div class="container">
+    <h1 class="page-heading m-b-1">Applicant Details</h1>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-appl">
+          Application Number:</label>
+      </div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplappl" id="apl-appl"
+          [(ngModel)]="registrationInfo.ApplicationNumber" disabled>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-fst">
+          First Name:</label>
+      </div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplfst" id="apl-fst"
+          [(ngModel)]="registrationInfo.FirstName" [disabled]="!canEdit">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="apl-mdl">
+          Middle Name:</label>
+      </div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplmdl" id="apl-mdl"
+          [(ngModel)]="registrationInfo.MiddleName" [disabled]="!canEdit">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-lst"> Last Name:</label>
+      </div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="apllst" id="apl-lst"
+          [(ngModel)]="registrationInfo.LastName" [disabled]="!canEdit">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required"> <label for="apl-dob">Date of Birth:</label></div>
+      <div class="col-sm-3 m-b-1">
+        <!-- <input type="text" class="form-control d-inline" name="apldob" id="apl-dob" [(ngModel)]="dateOfBirth"
+          [disabled]="!canEdit"> -->
+        <p-calendar class="col-md-12 p-l-0 p-r-0 d-inlineb" [(ngModel)]="registrationInfo.DateofBirth" name="apldob"
+          id="apl-dob" [inputStyle]="{'width':'80%'}" showIcon="true" placeholder="mm/dd/yyyy" dateFormat="mm/dd/yy"
+          title="date of birth" [maxDate]="maxDate" [disabled]="!canEdit"></p-calendar>
+      </div>
+
+    </div>
+
+    <div class="clear"> </div>
+    <p></p>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-add1">
+          Address:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplAdd1" id="apl-add1"
+          [(ngModel)]="registrationInfo.Address1" [disabled]="!canEdit">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="apl-add2">
+        </label></div>
+      <div class="col-sm-5 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplAdd1" id="apl-add2"
+          [(ngModel)]="registrationInfo.Address2" [disabled]="!canEdit">
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="city-id">
+          City:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="cityList" placeholder="City" [(ngModel)]="selectedCity"
+          [disabled]="!canEdit" optionLabel="Name" id="city-id">
+        </p-dropdown>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="state-id">
+          State:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="stateList" placeholder="State" [(ngModel)]="selectedState"
+          [disabled]="!canEdit" optionLabel="Name" id="state-id">
+        </p-dropdown>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="country-id">
+          Country:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="countryList" placeholder="Country" [(ngModel)]="selectedCountry"
+          [disabled]="!canEdit" optionLabel="Name" id="country-id">
+        </p-dropdown>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="apl-zip">Zip Code:
+        </label></div>
+      <div class="col-sm-3 m-b-1">
+        <input type="text" class="form-control d-inline" name="aplZip" id="apl-zip" [(ngModel)]="registrationInfo.POBOX"
+          [disabled]="!canEdit">
+      </div>
+
+    </div>
+
+    <div class="clear"> </div>
+    <h1 class="page-heading m-b-1 required">Course Preferences</h1>
+    <div class="row">
+      <ag-grid-angular #agGrid id="coursePreference" class="ag-theme-balham fontfamily"
+        [columnDefs]="preferenceColumnDefs" style="width: 75%; height: 200px;" rowSelection="single"
+        (gridReady)="onGridReady($event)" [gridOptions]="preferenceGridOptions" [rowData]="coursesByApplicant">
+      </ag-grid-angular>
+
+      <!-- <ag-grid-angular #agGrid1 style="width: 100%; height: 600px;" class="ag-theme-balham left" [rowData]="rowData"
+      [columnDefs]="columnDefs" (gridReady)="gridReady($event)" [gridOptions]="gridOptions" rowSelection="single"
+      (rowSelected)="onRowSelected($event)">
+    </ag-grid-angular> -->
+    </div>
+
+    <div class="clear"> </div>
+    <h1 class="page-heading m-b-1">Previous Course Marks</h1>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="completedCourseId">
+          Recently Completed Course:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="courseList" placeholder="Previous Course" [disabled]="!canEdit"
+          [(ngModel)]="selectedPreviouseCourse" optionLabel="Course" id="completedCourseId">
+        </p-dropdown>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-pmarks">Total Marks:
+        </label></div>
+      <div class="col-sm-2 m-b-1">
+        <input type="number" class="form-control d-inline" name="aplPMarks" id="apl-pmarks" [disabled]="!canEdit"
+          [(ngModel)]="registrationInfo.PreviousCourseTotalMark">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="apl-ppercentage">Percentage:
+        </label></div>
+      <div class="col-sm-2 m-b-1">
+        <input type="number" class="form-control d-inline" name="aplPPercentage" id="apl-ppercentage" min="10" max="100"
+          [disabled]="!canEdit" [(ngModel)]="registrationInfo.PreviousCourseTotalMarkPercentage">
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label for="prv-address">
+          Previous College Address:</label>
+      </div>
+      <div class="col-sm-5 m-b-1">
+        <textarea class="form-control d-inline" name="prvaddress" id="prv-address" rows="2" cols="2"
+          [(ngModel)]="registrationInfo.PreviousCollegeAddress" [disabled]="!canEdit"></textarea>
+      </div>
+
+    </div>
+
+
+    <div class="clear"> </div>
+    <h1 class="page-heading m-b-1">Application Quota / Category</h1>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1 required">
+        <label for="reservationId">
+          Reservation:</label></div>
+      <div class="col-sm-5 m-b-1">
+        <p-dropdown class="dropdown" [options]="reservationQuotaList" placeholder="Category" [disabled]="!canEdit"
+          [(ngModel)]="reservationQuota" optionLabel="Name" id="reservationId">
+        </p-dropdown>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 m-b-1">
+        <label>
+          Proof of Reservation:</label></div>
+      <div class="col-sm-5 m-b-1" *ngIf="reservationQuota">
+        {{reservationQuota.ReservationProofs}}
+      </div>
+
+    </div>
+
+    <div class="text-center no-gutter right hidden-print" *ngIf="canEdit">
+      <button class="btn btn-primary m-r-2 fontweightbold" (click)="saveForLater()" [disabled]="!enableSaveButton">Save
+        For Later</button>
+
+      <button class="btn btn-primary  fontweightbold" (click)="complete()" [disabled]="!enableCompleteButton">Complete
+        Application</button>
+    </div>
+    <div class="text-center no-gutter right hidden-print" *ngIf="!canEdit">
+      <button class="btn btn-primary  fontweightbold" (click)="back()">Back</button>
+    </div>
+    <!-- <div class="clear w-100"></div> -->
+    <span class="smallfontsize">Last Date of Application:{{lastDateOfApplication}}</span>
+  </div>
+</section>

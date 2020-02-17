@@ -1,0 +1,62 @@
+<div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-qst1">
+        Security Question 1:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <p-dropdown class="dropdown" [options]="questionList" placeholder="Security Question"
+        [disabled]="isExistingApplicant" [(ngModel)]="selectedQuestion1" optionLabel="Question" id="security-qst1">
+      </p-dropdown>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-answ1">
+        Security Answer 1:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <input type="text" class="form-control d-inline" name="aplmname" id="security-answ1" [(ngModel)]="qstAnswer1">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-qst2">
+        Security Question 2:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <p-dropdown class="dropdown" [options]="questionList" placeholder="Security Question"
+        [disabled]="isExistingApplicant" [(ngModel)]="selectedQuestion2" optionLabel="Question" id="security-qst2">
+      </p-dropdown>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-answ2">
+        Security Answer 2:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <input type="text" class="form-control d-inline" name="aplmname" id="security-answ2" [(ngModel)]="qstAnswer2">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-qst3">
+        Security Question 3:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <p-dropdown class="dropdown" [options]="questionList" placeholder="Security Question"
+        [disabled]="isExistingApplicant" [(ngModel)]="selectedQuestion3" optionLabel="Question" id="security-qst3">
+      </p-dropdown>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-3 required">
+      <label for="security-answ3">
+        Security Answer 3:</label></div>
+    <div class="col-sm-5 m-b-1">
+      <input type="text" class="form-control d-inline" name="aplmname" id="security-answ3" [(ngModel)]="qstAnswer3">
+    </div>
+
+  </div>
+</div>

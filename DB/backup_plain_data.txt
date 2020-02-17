@@ -1,0 +1,512 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.5
+-- Dumped by pg_dump version 11.5
+
+-- Started on 2019-09-15 22:17:27
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3060 (class 0 OID 16419)
+-- Dependencies: 202
+-- Data for Name: City; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."City" ("Id", "Name") FROM stdin;
+1	Aluva
+\.
+
+
+--
+-- TOC entry 3056 (class 0 OID 16397)
+-- Dependencies: 198
+-- Data for Name: Country; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Country" ("Id", "Name") FROM stdin;
+1	India
+2	US
+\.
+
+
+--
+-- TOC entry 3058 (class 0 OID 16408)
+-- Dependencies: 200
+-- Data for Name: State; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."State" ("Id", "Name") FROM stdin;
+1	Kerala
+\.
+
+
+--
+-- TOC entry 3062 (class 0 OID 16430)
+-- Dependencies: 204
+-- Data for Name: Address; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Address" ("Id", "Address1", "Address2", "CityId", "StateId", "CountryId", "POBOX") FROM stdin;
+1	Aluva	\N	1	1	1	683102
+\.
+
+
+--
+-- TOC entry 3064 (class 0 OID 16441)
+-- Dependencies: 206
+-- Data for Name: College; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."College" ("Id", "Name", "AddressId", "University", "PhoneNumbers", "Website", "Email") FROM stdin;
+1	Union Christian College	\N	Mahatma Gandhi University	\N	\N	\N
+\.
+
+
+--
+-- TOC entry 3066 (class 0 OID 16486)
+-- Dependencies: 208
+-- Data for Name: AcademicYear; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."AcademicYear" ("Id", "Year", "StartDate", "CompletionDate", "TotalOccupancy", "CollegeId", "Active", "LastDateofApplication") FROM stdin;
+1	2020	2019-08-01	2020-05-31	2900	1	t	2019-06-30
+\.
+
+
+--
+-- TOC entry 3084 (class 0 OID 16692)
+-- Dependencies: 226
+-- Data for Name: Application; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Application" ("Id", "ApplicationNumber", "AcademicYearId", "CollegeId", "ReceiptNumber", "FirstName", "DateOfBirth", "MiddleName", "LastName") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3096 (class 0 OID 16849)
+-- Dependencies: 238
+-- Data for Name: SecurityQuestionBank; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."SecurityQuestionBank" ("Id", "Question") FROM stdin;
+1	What was your childhood nickname?
+2	In what city did you meet your spouse other?
+3	What is the name of your favorite childhood friend?
+4	What street did you live on in third grade?
+5	What is your oldest sibling’s birthday month and year? (e.g., January 1900)
+6	What is the middle name of your youngest child?
+7	What school did you attend for sixth grade?
+8	What was your childhood phone number including area code? (e.g., 000-000-0000)
+9	What was the name of your first stuffed animal?
+10	In what city or town did your mother and father meet?
+11	In what city does your nearest sibling live?
+12	In what city or town was your first job?
+13	What is the name of the place your wedding reception was held?
+\.
+
+
+--
+-- TOC entry 3086 (class 0 OID 16737)
+-- Dependencies: 228
+-- Data for Name: Applicant; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Applicant" ("Id", "ApplicationId", "TotalMark", "PreviousCourse", "PreviousCollegeAddress", "FirstName", "MiddleName", "LastName", "DateofBirth", "AddressId", "SecurityQuestionId1", "SecurityQuestionId2", "SecurityQuestionId3", "SecurityAnswer1", "SecurityAnswer2", "SecurityAnswer3", "Percentage") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3070 (class 0 OID 16508)
+-- Dependencies: 212
+-- Data for Name: Subject; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Subject" ("Id", "Name") FROM stdin;
+1	English
+2	Malayalam
+3	Hindi
+4	Physics
+5	Chemistry
+6	Mathematics
+7	Botony
+8	Zoology
+9	Psychology
+10	Computer Science
+11	History
+12	Economics
+\.
+
+
+--
+-- TOC entry 3088 (class 0 OID 16767)
+-- Dependencies: 230
+-- Data for Name: ApplicantMark; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."ApplicantMark" ("Id", "ApplicantId", "SubjectId", "Mark", "Percentage", "MaximumMark") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3068 (class 0 OID 16497)
+-- Dependencies: 210
+-- Data for Name: Branch; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Branch" ("Id", "Name", "MajorSubjectId", "CommenceDate", "TotalOccupancy", "CollegeId") FROM stdin;
+1	English	\N	1995-01-01	150	1
+2	Malayalam	\N	1995-01-01	120	1
+3	Hindi	\N	1995-01-01	100	1
+4	Physics	\N	1995-01-01	150	1
+5	Chemistry	\N	1995-01-01	300	1
+6	Mathematics	\N	1995-01-01	150	1
+7	Botony	\N	1995-01-01	80	1
+8	Zoology	\N	1995-01-01	80	1
+9	Psychology	\N	1995-01-01	70	1
+10	Computer Science	\N	1995-01-01	80	1
+11	History	\N	1995-01-01	150	1
+12	Economics	\N	1995-01-01	150	1
+\.
+
+
+--
+-- TOC entry 3098 (class 0 OID 17158)
+-- Dependencies: 240
+-- Data for Name: Course; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Course" ("Id", "Name", "MajorSubjectId", "TotalOccupancy", "BranchId", "Duration", "Active") FROM stdin;
+1	M.Sc Chemistry	\N	150	5	24	t
+2	B.Sc Chemistry	\N	150	5	36	t
+3	M.Sc Physics	\N	150	4	24	t
+4	B.Sc Physics	\N	150	4	36	t
+5	Ph.D Physics	\N	20	4	\N	t
+6	M.Sc. Mathematics	\N	150	6	24	t
+7	B.Sc Mathematics	\N	150	6	36	t
+8	Ph.D Mathematics	\N	20	6	\N	t
+\.
+
+
+--
+-- TOC entry 3092 (class 0 OID 16808)
+-- Dependencies: 234
+-- Data for Name: ApplicantPreference; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."ApplicantPreference" ("Id", "ApplicantId", "PreferenceRank", "CourseId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3078 (class 0 OID 16617)
+-- Dependencies: 220
+-- Data for Name: Quota; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Quota" ("Id", "Name", "IsReservation", "ReservationProofs", "ReservationPercentage") FROM stdin;
+1	General/Merit	f	\N	\N
+2	Management	t	\N	\N
+3	Sports	t	Certificate of Achievements	1
+4	SC	t	Caste Certificate	5
+5	ST	t	Caste Certificate	3
+6	OEC	t	Caste Certificate	2
+7	OBC	t	Caste Certificate	1
+8	Physically Disabled	t	BLIND/DEAF/ORTHOPEDIC	1
+9	EX-SERVICEMEN	t	EX-SERVICEMEN CERTIFICATE (FROM JILLA SAINIK OFFICER)	1
+\.
+
+
+--
+-- TOC entry 3090 (class 0 OID 16790)
+-- Dependencies: 232
+-- Data for Name: ApplicantReservation; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."ApplicantReservation" ("Id", "ApplicantId", "QuotaId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3074 (class 0 OID 16532)
+-- Dependencies: 216
+-- Data for Name: Staff; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."Staff" ("Id", "FirstName", "MiddleName", "LastName", "DateOfBirth", "UserName", "Password", "AddressId", "CollegeId", "IsAdmin") FROM stdin;
+1	Jackson	\N	Paul	1976-05-25	pjackson	jack100	\N	1	\N
+2	Alvin	\N	Joseph	1980-10-12	jalvin	alvi100	\N	1	\N
+3	Treesa	\N	Jacob	1980-05-14	jtreesa	tres100	\N	1	\N
+4	Thomas	\N	Varghese	1977-08-10	vthomas	thom100	\N	1	\N
+5	Nelson	\N	Raphel	1979-04-21	rnelson	nels100	\N	1	\N
+6	Mariya	\N	Roy	1981-07-24	rmariya	mari100	\N	1	\N
+7	Martin	\N	Mani	1976-06-20	mmartin	mart100	\N	1	t
+\.
+
+
+--
+-- TOC entry 3076 (class 0 OID 16594)
+-- Dependencies: 218
+-- Data for Name: BranchStaff; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."BranchStaff" ("Id", "BranchId", "StaffId", "AcademicYearId", "IsHeadOfDepartment") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3072 (class 0 OID 16524)
+-- Dependencies: 214
+-- Data for Name: BranchSubject; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."BranchSubject" ("Id", "BranchId", "SubjectId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3080 (class 0 OID 16628)
+-- Dependencies: 222
+-- Data for Name: CutOffMark; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."CutOffMark" ("Id", "QuotaId", "TotalCutOffMark", "AcademicYearId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3094 (class 0 OID 16826)
+-- Dependencies: 236
+-- Data for Name: RankList; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."RankList" ("Id", "ApplicantId", "QuotaId", "AcademicYearId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3082 (class 0 OID 16649)
+-- Dependencies: 224
+-- Data for Name: SubjectCutOffMark; Type: TABLE DATA; Schema: Ref; Owner: postgres
+--
+
+COPY "Ref"."SubjectCutOffMark" ("Id", "CutOffMark", "SubjectId", "CutOffMarkId") FROM stdin;
+\.
+
+
+--
+-- TOC entry 3104 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: AcademicYear_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."AcademicYear_Id_seq"', 1, true);
+
+
+--
+-- TOC entry 3105 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: Address_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Address_Id_seq"', 1, true);
+
+
+--
+-- TOC entry 3106 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: ApplicantMark_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."ApplicantMark_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3107 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: ApplicantPreference_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."ApplicantPreference_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3108 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: ApplicantReservation_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."ApplicantReservation_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3109 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: Applicant_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Applicant_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3110 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: Application_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Application_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3111 (class 0 OID 0)
+-- Dependencies: 217
+-- Name: BranchStaff_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."BranchStaff_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3112 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: BranchSubject_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."BranchSubject_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3113 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: Branch_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Branch_Id_seq"', 12, true);
+
+
+--
+-- TOC entry 3114 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: City_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."City_Id_seq"', 1, true);
+
+
+--
+-- TOC entry 3115 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: College_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."College_Id_seq"', 1, true);
+
+
+--
+-- TOC entry 3116 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: Country_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Country_Id_seq"', 2, true);
+
+
+--
+-- TOC entry 3117 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: Course_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Course_Id_seq"', 8, true);
+
+
+--
+-- TOC entry 3118 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: Quota_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Quota_Id_seq"', 9, true);
+
+
+--
+-- TOC entry 3119 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: RankList_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."RankList_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3120 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: SecurityQuestionBank_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."SecurityQuestionBank_Id_seq"', 13, true);
+
+
+--
+-- TOC entry 3121 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Staff_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Staff_Id_seq"', 7, true);
+
+
+--
+-- TOC entry 3122 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: State_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."State_Id_seq"', 1, true);
+
+
+--
+-- TOC entry 3123 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: SubjectMarkCutOff_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."SubjectMarkCutOff_Id_seq"', 1, false);
+
+
+--
+-- TOC entry 3124 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: Subject_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."Subject_Id_seq"', 12, true);
+
+
+--
+-- TOC entry 3125 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: TotalMarkCutOff_Id_seq; Type: SEQUENCE SET; Schema: Ref; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Ref"."TotalMarkCutOff_Id_seq"', 1, false);
+
+
+-- Completed on 2019-09-15 22:17:27
+
+--
+-- PostgreSQL database dump complete
+--
+
