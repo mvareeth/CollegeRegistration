@@ -1,4 +1,4 @@
-"# CollegeRegistration" 
+# CollegeRegistration 
 
 This project is written in PEAN stack.
 
